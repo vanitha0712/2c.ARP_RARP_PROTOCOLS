@@ -17,6 +17,7 @@ stored.
 5. Map the IP address with its MAC address and return the MAC address to client.
 P
 ## PROGRAM - ARP
+```
 import socket
 s = socket.socket()
 host = socket.gethostname()
@@ -44,7 +45,7 @@ mac = s.recv(1024).decode()
 print("MAC Address is:", mac)
 s.close()
 
-
+```
 ## OUPUT -RARP
 <img width="1920" height="1080" alt="Screenshot 2026-05-19 143143" src="https://github.com/user-attachments/assets/5535a0a5-0f7e-44de-a4e3-345994b99fd2" />
 
