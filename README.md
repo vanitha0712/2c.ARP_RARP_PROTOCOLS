@@ -62,8 +62,8 @@ while True:
     print("Logical Address:", ip)
 s.close()
 print("Connection closed.")
-
-
+```
+```
 import socket
 s = socket.socket()
 s.bind(('localhost', 9000))
@@ -87,7 +87,6 @@ while True:
         c.send("Not Found".encode())
 c.close()
 print("Connection closed.")
-
 ```
 ## RARP
 <img width="1376" height="851" alt="image" src="https://github.com/user-attachments/assets/c0a984bc-da69-46a1-866e-560cad455936" />
