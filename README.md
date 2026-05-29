@@ -46,8 +46,52 @@ print("MAC Address is:", mac)
 s.close()
 
 ```
-## OUPUT -RARP
+## OUPUT -ARP
 <img width="1920" height="1080" alt="Screenshot 2026-05-19 143143" src="https://github.com/user-attachments/assets/5535a0a5-0f7e-44de-a4e3-345994b99fd2" />
+## RARP
+```
+import socket
+s = socket.socket()
+s.connect(('localhost', 9000))
+while True:
+    mac = input("Enter MAC Address (or 'exit' to quit): ")
+    if mac.lower() == 'exit':
+        break
+    s.send(mac.encode())
+    ip = s.recv(1024).decode()
+    print("Logical Address:", ip)
+s.close()
+print("Connection closed.")
+
+
+import socket
+s = socket.socket()
+s.bind(('localhost', 9000))
+s.listen(5)
+print("Server is listening on port 9000...")
+c, addr = s.accept()
+print("Connection from:", addr)
+address = {
+    "6A:08:AA:C2": "192.168.1.100",
+    "8A:BC:E3:FA": "192.168.1.99"
+}
+while True:
+    mac = c.recv(1024).decode()
+    if not mac:
+        break  
+    print("Received MAC Address:", mac)
+
+    try:
+        c.send(address[mac].encode())
+    except KeyError:
+        c.send("Not Found".encode())
+c.close()
+print("Connection closed.")
+
+```
+## RARP
+<img width="1376" height="851" alt="image" src="https://github.com/user-attachments/assets/c0a984bc-da69-46a1-866e-560cad455936" />
+
 
 ## RESULT
 Thus, the python program for simulating ARP protocols using TCP was successfully 
